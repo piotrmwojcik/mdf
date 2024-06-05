@@ -12,7 +12,7 @@ from mdfloss import MDFLoss
 # Set parameters
 cuda_available = True
 epochs = 800
-application = 'SISR'
+application = 'Denoising'
 image_path = './misc/mp_scene_0000_002.png'
 pickle_file_path = './misc/scene_0000.pkl'
 
@@ -67,8 +67,8 @@ optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
 
-#criterion = MDFLoss(path_disc, cuda_available=cuda_available)
-criterion = nn.MSELoss()
+criterion = MDFLoss(path_disc, cuda_available=cuda_available)
+#criterion = nn.MSELoss()
 
 
 # Iterate over the epochs optimizing for the noisy image
