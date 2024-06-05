@@ -96,8 +96,3 @@ for i, (image, title) in enumerate(zip(images, titles)):
     ax.axis('off')  # Hide the axes
     plt.savefig(f'image_{i}.png', bbox_inches='tight')  # Save the figure
     plt.close(fig)  # Close the figure to free memory
-
-# Remove the ticks from the axis
-for ax in axs:
-    ax.set_xticks([])
-    ax.set_yticks([])
