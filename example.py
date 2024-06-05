@@ -62,7 +62,7 @@ if cuda_available:
 imgrb = Variable( imgr, requires_grad = False)
 imgdb = Variable( imgd, requires_grad = True)
 
-optimizer = optim.Adam([imgdb], lr=0.1)
+optimizer = optim.Adam([imgdb], lr=0.2)
 
 # Initialise the loss
 criterion = MDFLoss(path_disc, cuda_available=cuda_available)
