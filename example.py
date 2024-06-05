@@ -71,7 +71,7 @@ criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 
 
 # Iterate over the epochs optimizing for the noisy image
-patience = 5  # Number of epochs to wait for improvement
+patience = 10  # Number of epochs to wait for improvement
 best_loss = float('inf')
 epochs_without_improvement = 0
 
