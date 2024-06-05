@@ -10,7 +10,7 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 600
+epochs = 10000
 application = 'SISR'
 image_path = './misc/mp_scene_0000_002.png'
 pickle_file_path = './misc/scene_0000.pkl'
@@ -68,14 +68,35 @@ optimizer = optim.Adam([imgdb], lr=0.2)
 
 criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 
+
+
 # Iterate over the epochs optimizing for the noisy image
-for ii in range(0,epochs):
-    
+patience = 2  # Number of epochs to wait for improvement
+best_loss = float('inf')
+epochs_without_improvement = 0
+
+for ii in range(epochs):
+    model.train()
     optimizer.zero_grad()
-    loss = criterion(imgrb,imgdb) 
-    print("Epoch: ",ii," loss: ", loss.item())
+
+    # Forward pass
+    outputs = model(imgrb)
+    loss = criterion(outputs, imgdb)
+
+    print(f"Epoch: {ii}, Loss: {loss.item()}")
+
+    # Backward pass and optimization
     loss.backward()
     optimizer.step()
+
+    # Check for improvement
+    if loss.item() < best_loss:
+        best_loss = loss.item()
+        epochs_without_improvement = 0
+    else:
+        epochs_without_improvement += 1
+
+    # Check fo
  
     
 
