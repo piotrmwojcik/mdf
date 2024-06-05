@@ -46,10 +46,10 @@ imgr = imgr.permute(2,0,1)[:3, :, :]
 imgr = imgr.unsqueeze(0).type(torch.FloatTensor)
 
 # Create a noisy image 
-#imgd = torch.rand(imgr.size())
-loaded_tensor = load_tensor_from_pickle(pickle_file_path)
-loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
-imgd = loaded_tensor[2, :, :, :].unsqueeze(0)
+imgd = torch.rand(imgr.size())
+#loaded_tensor = load_tensor_from_pickle(pickle_file_path)
+#loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
+#imgd = loaded_tensor[2, :, :, :].unsqueeze(0)
 
 # Save the original state
 imgdo = imgd.detach().clone()
