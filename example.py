@@ -13,7 +13,7 @@ from mdfloss import MDFLoss
 # Set parameters
 cuda_available = True
 epochs = 2000
-application = 'Denoising'
+application = 'JPEG'
 image_path = './misc/mp_scene_0000_002.png'
 pickle_file_path = './misc/scene_0000.pkl'
 
