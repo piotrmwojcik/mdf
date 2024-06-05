@@ -76,7 +76,6 @@ best_loss = float('inf')
 epochs_without_improvement = 0
 
 for ii in range(epochs):
-    model.train()
     optimizer.zero_grad()
     loss = criterion(imgrb, imgdb)
 
