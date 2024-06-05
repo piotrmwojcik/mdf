@@ -42,15 +42,14 @@ def load_tensor_from_pickle(pickle_file_path):
 imgr = imageio.imread(image_path)
 imgr = torch.from_numpy(imageio.core.asarray(imgr/255.0))
 imgr = imgr.type(dtype=torch.float64)
-imgr = imgr.permute(2,0,1)
+imgr = imgr.permute(2,0,1)[:3, :, :]
 imgr = imgr.unsqueeze(0).type(torch.FloatTensor)
 
 # Create a noisy image 
 #imgd = torch.rand(imgr.size())
 loaded_tensor = load_tensor_from_pickle(pickle_file_path)
 loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
-single_image = loaded_tensor[2, :, :, :]
-imgd = single_image.permute(1, 2, 0)
+imgd = loaded_tensor[2, :, :, :].unsqueeze()
 print('!!')
 print(imgr.shape)
 print(imgd.shape)
