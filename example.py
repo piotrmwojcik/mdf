@@ -6,7 +6,7 @@ import torch.nn as nn
 import matplotlib.pyplot as plt
 import numpy as np
 from torch.autograd import Variable
-from loss_modules import VGGPerceptualLoss
+from loss_modules.VGGPerceptualLoss import VGGPerceptualLoss
 
 from mdfloss import MDFLoss
 
