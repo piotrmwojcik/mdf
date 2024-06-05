@@ -1,6 +1,7 @@
 import torch
 import torch.optim as optim
 import imageio
+import pickle
 import matplotlib.pyplot as plt
 import numpy as np
 from torch.autograd import Variable
@@ -11,7 +12,8 @@ from mdfloss import MDFLoss
 cuda_available = True
 epochs = 25
 application = 'JPEG'
-image_path = './misc/i10.png'
+image_path = './misc/mp_scene_0000_002.png'
+pickle_file_path = './misc/scene_0000.pkl'
 
 if application =='SISR':
     path_disc = "./weights/Ds_SISR.pth"
@@ -19,6 +21,22 @@ elif application == 'Denoising':
     path_disc = "./weights/Ds_Denoising.pth"
 elif application == 'JPEG':
     path_disc = "./weights/Ds_JPEG.pth"
+
+
+def load_tensor_from_pickle(pickle_file_path):
+    # Load the PyTorch tensor from the pickle file
+    with open(pickle_file_path, 'rb') as file:
+        loaded_tensor = pickle.load(file)
+
+        #loaded_tensor = torch.tensor(loaded_tensor)
+        #t = torch.load(pickle_file_path)['param']['code_']
+        #print(t.keys())
+        #t = t[..., ::-1, :]
+        #print(t.shape)
+        #print(t)
+        loaded_tensor = torch.tensor(loaded_tensor)
+
+    return loaded_tensor
 
 #%% Read reference images
 imgr = imageio.imread(image_path)
@@ -28,7 +46,10 @@ imgr = imgr.permute(2,0,1)
 imgr = imgr.unsqueeze(0).type(torch.FloatTensor)
 
 # Create a noisy image 
-imgd = torch.rand(imgr.size())
+#imgd = torch.rand(imgr.size())
+loaded_tensor = load_tensor_from_pickle(pickle_file_path)
+single_image = loaded_tensor[2, :, :, :]
+imgd = single_image.permute(1, 2, 0)
 
 # Save the original state
 imgdo = imgd.detach().clone()
