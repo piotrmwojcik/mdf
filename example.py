@@ -6,6 +6,7 @@ import torch.nn as nn
 import matplotlib.pyplot as plt
 import numpy as np
 from torch.autograd import Variable
+from loss_modules import VGGPerceptualLoss
 
 from mdfloss import MDFLoss
 
@@ -67,9 +68,9 @@ optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
 
-criterion = MDFLoss(path_disc, cuda_available=cuda_available)
+#criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 #criterion = nn.MSELoss()
-
+critertion = VGGPerceptualLoss()
 
 # Iterate over the epochs optimizing for the noisy image
 patience = 10  # Number of epochs to wait for improvement
