@@ -68,12 +68,12 @@ optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
 
-#criterion = MDFLoss(path_disc, cuda_available=cuda_available)
+criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 #criterion = nn.MSELoss()
-criterion = VGGPerceptualLoss().cuda()
+#criterion = VGGPerceptualLoss().cuda()
 
 # Iterate over the epochs optimizing for the noisy image
-patience = 15  # Number of epochs to wait for improvement
+patience = 10  # Number of epochs to wait for improvement
 best_loss = float('inf')
 epochs_without_improvement = 0
 
