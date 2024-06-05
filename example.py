@@ -78,10 +78,7 @@ epochs_without_improvement = 0
 for ii in range(epochs):
     model.train()
     optimizer.zero_grad()
-
-    # Forward pass
-    outputs = model(imgrb)
-    loss = criterion(outputs, imgdb)
+    loss = criterion(imgrb, imgdb)
 
     print(f"Epoch: {ii}, Loss: {loss.item()}")
 
@@ -96,7 +93,6 @@ for ii in range(epochs):
     else:
         epochs_without_improvement += 1
 
-    # Check fo
  
     
 
