@@ -48,6 +48,7 @@ imgr = imgr.unsqueeze(0).type(torch.FloatTensor)
 # Create a noisy image 
 #imgd = torch.rand(imgr.size())
 loaded_tensor = load_tensor_from_pickle(pickle_file_path)
+loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
 single_image = loaded_tensor[2, :, :, :]
 imgd = single_image.permute(1, 2, 0)
 print('!!')
