@@ -12,8 +12,8 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 800
-application = 'Denoising'
+epochs = 2000
+application = 'SISR'
 image_path = './misc/mp_scene_0000_002.png'
 pickle_file_path = './misc/scene_0000.pkl'
 
@@ -94,9 +94,9 @@ for ii in range(epochs):
     else:
         epochs_without_improvement += 1
 
-    #if epochs_without_improvement >= patience:
-    #   print("Early stopping triggered")
-    #    break
+    if epochs_without_improvement >= patience:
+       print("Early stopping triggered")
+       break
 
 
 
