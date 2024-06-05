@@ -92,8 +92,11 @@ for ii in range(epochs):
     else:
         epochs_without_improvement += 1
 
- 
-    
+    if epochs_without_improvement >= patience:
+        print("Early stopping triggered")
+        break
+
+
 
 # Convert images to numpy
 imgrnp = imgr.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
