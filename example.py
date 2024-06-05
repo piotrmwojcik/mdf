@@ -73,7 +73,7 @@ optimizer = optim.Adam([imgdb], lr=0.1)
 criterion = VGGPerceptualLoss().cuda()
 
 # Iterate over the epochs optimizing for the noisy image
-patience = 10  # Number of epochs to wait for improvement
+patience = 15  # Number of epochs to wait for improvement
 best_loss = float('inf')
 epochs_without_improvement = 0
 
