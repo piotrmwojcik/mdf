@@ -2,6 +2,7 @@ import torch
 import torch.optim as optim
 import imageio
 import pickle
+import torch.nn as nn
 import matplotlib.pyplot as plt
 import numpy as np
 from torch.autograd import Variable
@@ -66,8 +67,8 @@ optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
 
-criterion = MDFLoss(path_disc, cuda_available=cuda_available)
-
+#criterion = MDFLoss(path_disc, cuda_available=cuda_available)
+criterion = nn.MSELoss()
 
 
 # Iterate over the epochs optimizing for the noisy image
