@@ -50,6 +50,9 @@ imgr = imgr.unsqueeze(0).type(torch.FloatTensor)
 loaded_tensor = load_tensor_from_pickle(pickle_file_path)
 single_image = loaded_tensor[2, :, :, :]
 imgd = single_image.permute(1, 2, 0)
+print('!!')
+print(imgr.shape)
+print(imgd.shape)
 
 # Save the original state
 imgdo = imgd.detach().clone()
