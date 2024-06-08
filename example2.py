@@ -62,8 +62,8 @@ if cuda_available:
     imgd = imgd.cuda()
 
 # Convert images to variables to support gradients
-imgrb = Variable( imgr, requires_grad = False)
-imgdb = Variable( imgd, requires_grad = True)
+imgrb = Variable(imgr, requires_grad = False)
+imgdb = Variable(imgd, requires_grad = True)
 
 optimizer = optim.Adam([imgdb], lr=0.1)
 
@@ -98,8 +98,6 @@ for ii in range(epochs):
     #if epochs_without_improvement >= patience:
     #   print("Early stopping triggered")
     #   break
-
-
 
 # Convert images to numpy
 #imgrnp = imgr.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
