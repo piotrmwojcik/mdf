@@ -101,20 +101,23 @@ for ii in range(epochs):
 
 
 # Convert images to numpy
-imgrnp = imgr.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
-imgdnp = imgd.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
-imgdonp = imgdo.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
+#imgrnp = imgr.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
+#imgdnp = imgd.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
+#imgdonp = imgdo.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
 
 
 # List of images and their titles
 images = [imgdonp, imgdnp, imgrnp]
 titles = ['Noisy image', 'Recovered image', 'Reference image']
 
+with open(os.path.join('output.pkl'), 'wb') as file:
+    pickle.dump(imgdnp, file)
+
 # Iterate over the images and titles, and save each image with its title
-for i, (image, title) in enumerate(zip(images, titles)):
-    fig, ax = plt.subplots()
-    ax.imshow(image)
-    ax.set_title(title, fontsize=48)
-    ax.axis('off')  # Hide the axes
-    plt.savefig(f'image_{i}.png', bbox_inches='tight')  # Save the figure
-    plt.close(fig)  # Close the figure to free memory
+#for i, (image, title) in enumerate(zip(images, titles)):
+#    fig, ax = plt.subplots()
+#    ax.imshow(image)
+#    ax.set_title(title, fontsize=48)
+#    ax.axis('off')  # Hide the axes
+#    plt.savefig(f'image_{i}.png', bbox_inches='tight')  # Save the figure
+#    plt.close(fig)  # Close the figure to free memory
