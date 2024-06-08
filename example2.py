@@ -68,7 +68,6 @@ imgdb = Variable(imgd, requires_grad = True)
 optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
-
 criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 #criterion = nn.MSELoss()
 #criterion = VGGPerceptualLoss().cuda()
@@ -80,11 +79,7 @@ epochs_without_improvement = 0
 
 for ii in range(epochs):
     optimizer.zero_grad()
-    loss = torch.tensor(0.0).cuda()
-    for jj in range(imgrb.shape[0]):
-        loss += criterion(imgrb[jj].unsqueeze(0), imgdb[jj].unsqueeze(0))
-    loss = loss.mean()
-
+    loss = criterion(imgrb, imgdb)
     print(f"Epoch: {ii}, Loss: {loss.item()}")
 
     # Backward pass and optimization
