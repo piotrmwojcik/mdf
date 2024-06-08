@@ -44,6 +44,7 @@ class MDFLoss(nn.Module):
                 loss += l2
 
         print(loss)
+        print(loss.shape)
         # Mean loss
         loss = torch.mean(loss)
         print(loss)
