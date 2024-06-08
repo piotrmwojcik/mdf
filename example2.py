@@ -111,7 +111,7 @@ images = [imgdonp, imgdnp, imgrnp]
 titles = ['Noisy image', 'Recovered image', 'Reference image']
 
 with open(os.path.join('output.pkl'), 'wb') as file:
-    pickle.dump(imgdnp, file)
+    pickle.dump(imgdb, file)
 
 # Iterate over the images and titles, and save each image with its title
 #for i, (image, title) in enumerate(zip(images, titles)):
