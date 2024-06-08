@@ -73,7 +73,7 @@ criterion = MDFLoss(path_disc, cuda_available=cuda_available)
 #criterion = VGGPerceptualLoss().cuda()
 
 # Iterate over the epochs optimizing for the noisy image
-patience = 10  # Number of epochs to wait for improvement
+patience = 15  # Number of epochs to wait for improvement
 best_loss = float('inf')
 epochs_without_improvement = 0
 
@@ -94,11 +94,9 @@ for ii in range(epochs):
     else:
         epochs_without_improvement += 1
 
-    #if epochs_without_improvement >= patience:
-    #   print("Early stopping triggered")
-    #   break
-
-
+    if epochs_without_improvement >= patience:
+       print("Early stopping triggered")
+       break
 
 # Convert images to numpy
 imgrnp = imgr.cpu().squeeze(0).permute(1, 2, 0).clamp(0, 1).data.numpy()
