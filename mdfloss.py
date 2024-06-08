@@ -43,10 +43,7 @@ class MDFLoss(nn.Module):
                 # Add current difference to the loss
                 loss += l2
 
-        print(loss)
-        print(loss.shape)
         # Mean loss
         loss = torch.mean(loss)
-        print(loss)
 
         return loss

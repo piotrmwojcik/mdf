@@ -13,7 +13,7 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 400
+epochs = 300
 application = 'JPEG'
 image_path = './misc/mp_scene_0000_002.png'
 code_file_path = './misc/code.pkl'
@@ -80,7 +80,10 @@ epochs_without_improvement = 0
 
 for ii in range(epochs):
     optimizer.zero_grad()
-    loss = criterion(imgrb, imgdb)
+    loss = torch.tensor(0.0).cuda()
+    for jj in imgrb:
+        loss += criterion(imgrb[jj].unsqueeze(0), imgdb[jj].unsqueeze(0))
+    loss = loss.mean()
 
     print(f"Epoch: {ii}, Loss: {loss.item()}")
 
