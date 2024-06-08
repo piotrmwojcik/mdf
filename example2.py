@@ -13,7 +13,7 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 250
+epochs = 400
 application = 'JPEG'
 image_path = './misc/mp_scene_0000_002.png'
 code_file_path = './misc/code.pkl'
