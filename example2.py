@@ -81,7 +81,7 @@ epochs_without_improvement = 0
 for ii in range(epochs):
     optimizer.zero_grad()
     loss = torch.tensor(0.0).cuda()
-    for jj in imgrb:
+    for jj in range(imgrb.shape[0]):
         loss += criterion(imgrb[jj].unsqueeze(0), imgdb[jj].unsqueeze(0))
     loss = loss.mean()
 
