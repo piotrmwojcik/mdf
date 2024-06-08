@@ -107,8 +107,8 @@ for ii in range(epochs):
 
 
 # List of images and their titles
-images = [imgdonp, imgdnp, imgrnp]
-titles = ['Noisy image', 'Recovered image', 'Reference image']
+#images = [imgdonp, imgdnp, imgrnp]
+#titles = ['Noisy image', 'Recovered image', 'Reference image']
 
 with open(os.path.join('output.pkl'), 'wb') as file:
     pickle.dump(imgdb, file)
