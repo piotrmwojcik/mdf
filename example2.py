@@ -46,7 +46,7 @@ def load_tensor_from_pickle(pickle_file_path):
 #imgr = imageio.imread(image_path)
 loaded_tensor = load_tensor_from_pickle(code_file_path)[:6, ...]
 print('!!!')
-print(loaded_tensor.shape)
+print(loaded_tensor)
 loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
 imgd = loaded_tensor
 
@@ -54,6 +54,8 @@ imgd = loaded_tensor
 #imgd = torch.rand((48, 3, 128, 128))
 loaded_tensor = load_tensor_from_pickle(pred_file_path)[:6, ...]
 loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
+print('!!!!!')
+print(loaded_tensor)
 imgr = loaded_tensor
 
 # Save the original state
