@@ -13,7 +13,7 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 300
+epochs = 400
 application = 'JPEG'
 image_path = './misc/mp_scene_0000_002.png'
 code_file_path = './misc/code.pkl'
@@ -45,8 +45,6 @@ def load_tensor_from_pickle(pickle_file_path):
 #%% Read reference images
 #imgr = imageio.imread(image_path)
 loaded_tensor = load_tensor_from_pickle(code_file_path)[:4, ...]
-print('!!!')
-print(loaded_tensor)
 loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
 imgd = loaded_tensor
 
@@ -54,8 +52,6 @@ imgd = loaded_tensor
 #imgd = torch.rand((48, 3, 128, 128))
 loaded_tensor = load_tensor_from_pickle(pred_file_path)[:4, ...]
 loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
-print('!!!!!')
-print(loaded_tensor)
 imgr = loaded_tensor
 
 # Save the original state
