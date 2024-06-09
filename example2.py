@@ -45,6 +45,8 @@ def load_tensor_from_pickle(pickle_file_path):
 #%% Read reference images
 #imgr = imageio.imread(image_path)
 loaded_tensor = load_tensor_from_pickle(code_file_path)[:, 0, ...]
+print('!!!')
+print(loaded_tensor.shape)
 loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
 imgd = loaded_tensor
 
