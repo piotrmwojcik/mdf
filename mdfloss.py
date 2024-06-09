@@ -39,7 +39,7 @@ class MDFLoss(nn.Module):
                 # Compute L2 between representations
                 l2 = (pxs[idx] - pys[idx])**2
                 l2 = torch.mean(l2, dim=(1, 2, 3))
-
+                print(l2)
                 # Add current difference to the loss
                 loss += l2
 
