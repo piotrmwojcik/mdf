@@ -13,7 +13,7 @@ from mdfloss import MDFLoss
 
 # Set parameters
 cuda_available = True
-epochs = 1000
+epochs = 400
 application = 'JPEG'
 image_path = './misc/mp_scene_0000_002.png'
 code_file_path = './misc/code.pkl'
@@ -49,10 +49,10 @@ loaded_tensor = loaded_tensor.reshape(48, 3, 128, 128)
 imgd = loaded_tensor
 
 # Create a noisy image 
-#imgd = torch.rand(imgr.size())
-loaded_tensor = load_tensor_from_pickle(pred_file_path)
-loaded_tensor = loaded_tensor.reshape(48, 3, 128, 128)
-imgr = loaded_tensor
+imgd = torch.rand((48, 3, 128, 128))
+#loaded_tensor = load_tensor_from_pickle(pred_file_path)
+#loaded_tensor = loaded_tensor.reshape(48, 3, 128, 128)
+#imgr = loaded_tensor
 
 # Save the original state
 imgdo = imgd.detach().clone()
