@@ -55,7 +55,7 @@ loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
 imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) / (128.0 * 128.0)
-wpr = nn.Softmax(dim=0)(wpr)
+wpr = nn.Softmax(dim=0)(wpr * wpr)
 
 # Save the original state
 imgdo = imgd.detach().clone()
@@ -82,7 +82,7 @@ epochs_without_improvement = 0
 
 for ii in range(epochs):
     optimizer.zero_grad()
-    loss = criterion(imgrb, imgdb, weights=None)
+    loss = criterion(imgrb, imgdb, weights=wpr)
     print(f"Epoch: {ii}, Loss: {loss.item()}")
 
     # Backward pass and optimization
