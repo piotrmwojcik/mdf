@@ -54,9 +54,7 @@ loaded_tensor = load_tensor_from_pickle(pred_file_path)[:6, ...]
 loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
 imgr = loaded_tensor
 
-wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2))
-print('!!!!!!')
-print(wpr.shape)
+wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) * (1.0 / (128.0 * 128.0))
 print(wpr)
 
 # Save the original state
