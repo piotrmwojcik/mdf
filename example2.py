@@ -54,7 +54,9 @@ loaded_tensor = load_tensor_from_pickle(pred_file_path)[:4, ...]
 loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
 imgr = loaded_tensor
 
-wpr = None #(imgr == 1.0).all(dim=1).sum(dim=(1, 2)) * (5.0 / (128.0 * 128.0))
+wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) * (5.0 / (128.0 * 128.0))
+wpr = torch.softmax(wpr)
+print(wpr)
 
 # Save the original state
 imgdo = imgd.detach().clone()
