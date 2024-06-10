@@ -13,7 +13,7 @@ class MDFLoss(nn.Module):
 
         self.num_discs = len(self.Ds)
 
-    def forward(self, x, y, num_scales=8, is_ascending=1):
+    def forward(self, x, y, weights=None, num_scales=8, is_ascending=1):
         # Get batch_size
         batch_size = x.shape[0]
         
@@ -41,7 +41,8 @@ class MDFLoss(nn.Module):
                 l2 = torch.mean(l2, dim=(1, 2, 3))
                 # Add current difference to the loss
                 loss += l2
-
+        if weights is not None:
+            loss = torch.mul(loss, weights)
         # Mean loss
         loss = torch.mean(loss)
 
