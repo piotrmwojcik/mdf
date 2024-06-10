@@ -57,6 +57,7 @@ imgr = loaded_tensor
 wpr = (imgr == 1.0).all(dim=1)
 print('!!!!!!')
 print(wpr.shape)
+print(wpr)
 
 # Save the original state
 imgdo = imgd.detach().clone()
