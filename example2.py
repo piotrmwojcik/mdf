@@ -56,6 +56,8 @@ imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) * (5.0 / (128.0 * 128.0))
 wpr = nn.Softmax(dim=0)(wpr)
+print('!!!')
+print(wpr)
 
 # Save the original state
 imgdo = imgd.detach().clone()
