@@ -71,7 +71,7 @@ imgdb = Variable(imgd, requires_grad = True)
 optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
-criterion = MDFLoss(path_disc, cuda_available=cuda_available)
+criterion = MDFLoss(path_disc, weights=weights, cuda_available=cuda_available)
 #criterion = nn.MSELoss()
 #criterion = VGGPerceptualLoss().cuda()
 
