@@ -42,7 +42,6 @@ class MDFLoss(nn.Module):
                 # Add current difference to the loss
                 loss += l2
         if weights is not None:
-            print('!!!!')
             loss = torch.mul(loss, weights)
         # Mean loss
         loss = torch.sum(loss)
