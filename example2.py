@@ -55,7 +55,7 @@ loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
 imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) / (128.0 * 128.0)
-wpr = 5.0 * nn.Softmax(dim=0)(wpr)
+wpr = nn.Softmax(dim=0)(wpr)
 
 # Save the original state
 imgdo = imgd.detach().clone()
@@ -71,7 +71,7 @@ imgdb = Variable(imgd, requires_grad = True)
 optimizer = optim.Adam([imgdb], lr=0.1)
 
 # Initialise the loss
-criterion = MDFLoss(path_disc, weights=weights, cuda_available=cuda_available)
+criterion = MDFLoss(path_disc, weights=wpr, cuda_available=cuda_available)
 #criterion = nn.MSELoss()
 #criterion = VGGPerceptualLoss().cuda()
 
