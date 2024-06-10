@@ -44,6 +44,6 @@ class MDFLoss(nn.Module):
         if weights is not None:
             loss = torch.mul(loss, weights)
         # Mean loss
-        loss = torch.mean(loss)
+        loss = torch.sum(loss)
 
         return loss
