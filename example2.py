@@ -55,6 +55,7 @@ loaded_tensor = loaded_tensor.reshape(6, 3, 128, 128)
 imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1)
+print('!!!!!!')
 print(wpr.shape)
 
 # Save the original state
