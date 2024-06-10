@@ -85,7 +85,7 @@ epochs_without_improvement = 0
 
 for ii in range(epochs):
     optimizer.zero_grad()
-    loss = criterion(imgrb, imgdb, weights=wpr)
+    loss = criterion(imgrb, imgdb, weights=None)
     print(f"Epoch: {ii}, Loss: {loss.item()}")
 
     # Backward pass and optimization
