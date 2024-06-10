@@ -45,13 +45,13 @@ def load_tensor_from_pickle(pickle_file_path):
 #%% Read reference images
 #imgr = imageio.imread(image_path)
 loaded_tensor = load_tensor_from_pickle(code_file_path)
-loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
+loaded_tensor = loaded_tensor.reshape(48, 3, 128, 128)
 imgd = loaded_tensor
 
 # Create a noisy image 
 #imgd = torch.rand((48, 3, 128, 128))
 loaded_tensor = load_tensor_from_pickle(pred_file_path)
-loaded_tensor = loaded_tensor.reshape(4, 3, 128, 128)
+loaded_tensor = loaded_tensor.reshape(48, 3, 128, 128)
 imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) / (128.0 * 128.0)
