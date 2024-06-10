@@ -42,7 +42,7 @@ class MDFLoss(nn.Module):
                 # Add current difference to the loss
                 loss += l2
         if weights is not None:
-            loss = torch.mul(loss, (1.0 - weights))
+            loss = torch.mul(loss, weights)
         # Mean loss
         loss = torch.mean(loss)
 
