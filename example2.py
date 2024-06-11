@@ -91,11 +91,11 @@ for ii in range(epochs):
     optimizer.step()
 
     # Check for improvement
-    if loss.item() < best_loss:
-        best_loss = loss.item()
-        epochs_without_improvement = 0
-    else:
-        epochs_without_improvement += 1
+    #if loss.item() < best_loss:
+    #    best_loss = loss.item()
+    #    epochs_without_improvement = 0
+    #else:
+    #    epochs_without_improvement += 1
 
     if epochs_without_improvement >= patience:
        print("Early stopping triggered")
