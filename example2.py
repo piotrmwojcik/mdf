@@ -56,7 +56,7 @@ imgr = loaded_tensor
 
 wpr = (imgr == 1.0).all(dim=1).sum(dim=(1, 2)) / (128.0 * 128.0)
 #wpr = nn.Softmax(dim=0)(wpr * wpr * wpr)
-wpr = torch.tensor([3.0, 3.0, 1.0, 1.0]).cuda()
+wpr = torch.tensor([10.0, 10.0, 1.0, 1.0]).cuda()
 
 # Save the original state
 imgdo = imgd.detach().clone()
